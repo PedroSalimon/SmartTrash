@@ -19,12 +19,6 @@ import java.time.LocalDate;
 @Getter
 public class LixoEspacialDTO {
     private Long id;
-    @NotBlank(message = "O campo nome é obrigatório")
-    @Size(min = 5, max = 30, message = "O campo nome deve ter entre 5 e 30 caracteres")
-    private String nome;
-    @NotBlank(message = "O campo descrição é obrigatório")
-    @Size(min = 5, max = 30, message = "O campo descrição deve ter entre 10 e 50 caracteres")
-    private String descricao;
     @NotBlank(message = "O campo risco é obrigatório")
     @Size(max = 5, message = "O campo risco deve ter no máximo 5 caracteres")
     private String risco;
@@ -38,8 +32,6 @@ public class LixoEspacialDTO {
 
     public LixoEspacialDTO(LixoEspacial lixoEspacial){
         id = lixoEspacial.getId();
-        nome = lixoEspacial.getNome();
-        descricao = lixoEspacial.getDescricao();
         risco = lixoEspacial.getRisco();
         tipo = lixoEspacial.getTipo();
         dataUltimaAparicao = lixoEspacial.getDataUltimaAparicao();

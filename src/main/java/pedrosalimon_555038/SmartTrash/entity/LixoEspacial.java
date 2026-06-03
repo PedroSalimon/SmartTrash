@@ -18,10 +18,6 @@ public class LixoEspacial {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "nome", nullable = false, length = 30)
-    private String nome;
-    @Column(name = "descricao", nullable = false, length = 50)
-    private String descricao;
     @Column(name = "risco", nullable = false, length = 5)
     private String risco;
     @Column(nullable = false)

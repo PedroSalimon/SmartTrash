@@ -19,10 +19,14 @@ public class Colisao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "nome", nullable = false, length = 100)
+    private String nome;
+    @Column(name = "descricao", nullable = false, length = 200)
+    private String descricao;
     @Column(name = "dataColisao", nullable = false)
     private LocalDate dataColisao;
     @Column(name = "velocidadeImpacto", nullable = false)
-    private Double velocidadeImpacto;
+    private Long velocidadeImpacto;
     @Column(name = "qtdLixosGerados", nullable = false)
     private Long qtdLixosGerados;
     @OneToMany(mappedBy = "colisao",
