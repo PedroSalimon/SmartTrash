@@ -5,8 +5,10 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pedrosalimon_555038.SmartTrash.dto.LixoEspacialRequestDTO;
+import pedrosalimon_555038.SmartTrash.entity.Colisao;
 import pedrosalimon_555038.SmartTrash.entity.LixoEspacial;
 import pedrosalimon_555038.SmartTrash.exceptions.ResourceNotFoundException;
+import pedrosalimon_555038.SmartTrash.repositories.ColisaoRepository;
 import pedrosalimon_555038.SmartTrash.repositories.LixoEspacialRepository;
 
 import java.lang.module.ResolutionException;
@@ -16,6 +18,8 @@ import java.util.List;
 public class LixoEspacialService {
     @Autowired
     private LixoEspacialRepository lixoEspacialRepository;
+    @Autowired
+    private ColisaoRepository colisaoRepository;
 
     @Transactional
     public List<LixoEspacialRequestDTO> findAllLixos () {
@@ -27,6 +31,14 @@ public class LixoEspacialService {
         LixoEspacial lixoEspacial = lixoEspacialRepository.findById(id).orElseThrow(
                 () -> new ResolutionException("Recurso não encontrado. ID: " + id)
         );
+        return new LixoEspacialRequestDTO(lixoEspacial);
+    }
+
+    @Transactional
+    public LixoEspacialRequestDTO createLixoEspacial(LixoEspacialRequestDTO lixoEspacialRequestDTO) {
+        LixoEspacial lixoEspacial = new LixoEspacial();
+        mapDtoToLixoEspacial(lixoEspacialRequestDTO, lixoEspacial);
+        lixoEspacial = lixoEspacialRepository.save(lixoEspacial);
         return new LixoEspacialRequestDTO(lixoEspacial);
     }
 
@@ -47,5 +59,7 @@ public class LixoEspacialService {
         lixoEspacial.setRisco(lixoEspacialRequestDTO.getRisco());
         lixoEspacial.setTipo(lixoEspacialRequestDTO.getTipo());
         lixoEspacial.setPeso(lixoEspacialRequestDTO.getPeso());
+        Colisao colisao = colisaoRepository.getReferenceById(lixoEspacialRequestDTO.getId_colisao());
+        lixoEspacial.setColisao(colisao);
     }
 }

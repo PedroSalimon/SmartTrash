@@ -28,6 +28,7 @@ public class LixoEspacialRequestDTO {
     @Positive(message = "Peso deve ser um valor positivo e maior que zero")
     private Double peso;
     private Long id_colisao;
+    private String nomeColisao;
 
     public LixoEspacialRequestDTO(LixoEspacial lixoEspacial){
         id = lixoEspacial.getId();
@@ -36,6 +37,7 @@ public class LixoEspacialRequestDTO {
         dataAparicao = lixoEspacial.getDataAparicao();
         peso = lixoEspacial.getPeso();
         id_colisao = lixoEspacial.getColisao().getId();
+        nomeColisao = lixoEspacial.getColisao().getNome();
     }
 
 }
