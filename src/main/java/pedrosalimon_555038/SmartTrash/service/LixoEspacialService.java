@@ -54,6 +54,14 @@ public class LixoEspacialService {
         }
     }
 
+    @Transactional
+    public void deleteLixoById (Long id) {
+        if (!lixoEspacialRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Recurso não encontrado. ID: " + id);
+        }
+        lixoEspacialRepository.deleteById(id);
+    }
+
     private void mapDtoToLixoEspacial (LixoEspacialRequestDTO lixoEspacialRequestDTO, LixoEspacial lixoEspacial) {
         lixoEspacial.setDataAparicao(lixoEspacialRequestDTO.getDataAparicao());
         lixoEspacial.setRisco(lixoEspacialRequestDTO.getRisco());

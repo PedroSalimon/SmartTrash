@@ -47,5 +47,10 @@ public class LixoEspacialController {
         lixoEspacialRequestDTO = lixoEspacialService.updateLixo(id, lixoEspacialRequestDTO);
         return ResponseEntity.ok(lixoEspacialRequestDTO);
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteColisao (@PathVariable Long id) {
+        lixoEspacialService.deleteLixoById(id);
+        return ResponseEntity.noContent().build();
+    }
 
 }
