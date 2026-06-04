@@ -23,8 +23,8 @@ public class LixoEspacial {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Tipo tipo;
-    @Column(name = "dataUltimaAparicao", nullable = false)
-    private LocalDate dataUltimaAparicao;
+    @Column(name = "dataAparicao", nullable = false)
+    private LocalDate dataAparicao;
     @Column(name = "peso", nullable = false)
     private Double peso;
     @ManyToOne(optional = false)

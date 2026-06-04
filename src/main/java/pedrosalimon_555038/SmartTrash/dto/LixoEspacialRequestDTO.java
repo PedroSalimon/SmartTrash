@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class LixoEspacialDTO {
+public class LixoEspacialRequestDTO {
     private Long id;
     @NotBlank(message = "O campo risco é obrigatório")
     @Size(max = 5, message = "O campo risco deve ter no máximo 5 caracteres")
@@ -27,13 +27,15 @@ public class LixoEspacialDTO {
     @NotNull(message = "O campo de peso é obrigatório")
     @Positive(message = "Peso deve ser um valor positivo e maior que zero")
     private Double peso;
+    private Long id_colisao;
 
-    public LixoEspacialDTO(LixoEspacial lixoEspacial){
+    public LixoEspacialRequestDTO(LixoEspacial lixoEspacial){
         id = lixoEspacial.getId();
         risco = lixoEspacial.getRisco();
         tipo = lixoEspacial.getTipo();
         dataAparicao = lixoEspacial.getDataAparicao();
         peso = lixoEspacial.getPeso();
+        id_colisao = lixoEspacial.getColisao().getId();
     }
 
 }

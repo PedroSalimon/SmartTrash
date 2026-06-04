@@ -24,6 +24,7 @@ public class ColisaoDTO {
     @Size(min = 5, max = 200, message = "O campo descrição deve ter entre 10 e 200 caracteres")
     private String descricao;
     @NotNull(message = "O campo data de Colisão é obrigatório")
+    @PastOrPresent(message = "O campo de data de colisão deve ser passada ou presente")
     private LocalDate dataColisao;
     @NotNull(message = "O campo velocidade de impacto é obrigatório")
     @Positive(message = "Velocidade de impacto deve ser um valor positivo e maior que zero")
